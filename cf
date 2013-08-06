@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ "$1" = "" ];then
+	echo "no input"
+echo $argv
+
+else
+    echo -e "\033[42;31m Search " $1 "\033[m"
+	find . | sed -e '/\/tags$/d' -e '/\/\.git/d' -e '/\/\.svn/d' -e '/\.swp$/d' \
+           | xargs grep -niI --color='always' $1  \
+           | cat -b 
+fi
