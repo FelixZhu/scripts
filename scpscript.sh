@@ -30,10 +30,11 @@ else
 	exit 0
 fi
 
-if [ -f ~/Documents/Develop/script/scpscript_expect.sh ];then
-	chmod a+x ./scpscript_expect.sh
-	./scpscript_expect.sh $SRC $DST
-else
-	scp $SRC $DST
-fi
+#if [ -f ~/Documents/Develop/script/scpscript_expect.sh ];then
+#	chmod a+x ./scpscript_expect.sh
+#	./scpscript_expect.sh $SRC $DST
+#else
+#	scp $SRC $DST
+#fi
 
+scp $SRC $DST

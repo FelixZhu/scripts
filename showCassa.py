@@ -4,9 +4,11 @@ import pycassa
 
 from pycassa.system_manager import *
 
+CREDENTIALS = {'username': 'cassandra', 'password': 'cassandra'}
+
 dest = '10.13.95.47:9160'
 dest2 = '10.13.94.204:9160'
-sys = SystemManager(dest2)
+sys = SystemManager(server=dest, credentials=CREDENTIALS)
 
 def getKeyspaces():
 #	print 'Keyspaces:'
@@ -20,7 +22,7 @@ def getColFam(keyspace):
 	return sys.get_keyspace_column_families(keyspace)
 
 def getRange(keyspace, columnfamily):
-	pool = pycassa.ConnectionPool(keyspace, [dest])
+	pool = pycassa.ConnectionPool(keyspace, [dest], credentials=CREDENTIALS)
 	cf = pycassa.ColumnFamily(pool, columnfamily)
 	return list(cf.get_range(row_count = 20))
 

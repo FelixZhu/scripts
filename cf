@@ -1,12 +1,30 @@
 #!/bin/bash
 
 if [ "$1" = "" ];then
-	echo "no input"
-echo $argv
+    echo "no input"
+fi
+#echo $argv
 
-else
-    echo -e "\033[42;31m Search " $1 "\033[m"
-	find . | sed -e '/\/tags$/d' -e '/\/\.git/d' -e '/\/\.svn/d' -e '/\.swp$/d' \
-           | xargs grep -niI --color='always' $1  \
-           | cat -b 
+echo -e "\033[42;31m Search " $1 "\033[m"
+#
+#for i in $argv
+#do
+#    case i in
+#        '-i')
+#        ;;
+#    esac
+#done
+function find_word() {
+    find . -type f \
+        | sed -e '/\/tags$/d' -e '/\/\.git/d' -e '/\/\.svn/d' -e '/\.swp$/d' \
+        | xargs grep -niI --color='always' $1 2>/dev/null \
+        | cat -b
+}
+
+if [ "$1" != "" ];then
+    find_word $1
+fi
+
+if [ "$2" != "" ];then
+    find_word $1 | egrep -o '\.\/.*' | awk -F ':' '{print $1}' | sed -n '1p' | xargs vim +$2
 fi
