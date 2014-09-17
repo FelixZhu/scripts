@@ -2,15 +2,6 @@
 
 export CLICOLOR=1
 
-c="/Users/sohu/Documents/Develop/changyancommunity/"
-cf="/Users/sohu/changyancommunity_frontend/"
-cb="/Users/sohu/Documents/Develop/changyancommunity_bak/"
-
-export PYTHONPATH=$PYTHONPATH:"$c":"$cb/ccbackend":"/Users/sohu/Documents/Develop/script"
-export PATH=/opt/local/bin:/opt/local/sbin:/Users/sohu/Documents/Develop/script:$PATH
-
-# python ~/Documents/wallproxy-master/local/startup.py > /dev/null 2&>1 &
-
 export PS1="\[$(tput bold)$(tput setaf 1)\]\u@\h:\w \n> \[$(tput sgr0)\]"
 
 alias cd..='cd ..'

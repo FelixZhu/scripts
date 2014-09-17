@@ -1,6 +1,0 @@
-#!/bin/bash
-
-cd /Users/sohu/Documents/Develop/changyancommunity
-pwd
-ctags -R 
-cd -
